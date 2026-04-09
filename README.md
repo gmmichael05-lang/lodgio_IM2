@@ -12,6 +12,9 @@ To ensure a cohesive project, the ERD was divided such that each group member ha
 *   **`wishlist`**: Manages users saving and tracking their favorite properties. *(Built by Teammate)*
 *   **`search`**: Handles and logs query filtering across active lodgings. *(Built by Teammate)*
 *   **`approvals`**: Administrator tracking for validating and verifying host listings. *(Built by Teammate)*
+*   **`identity_document`**: Secure tracking and verification of user IDs and Host verification. *(Built by Teammate)*
+*   **`message`**: Handles internal communication history between Guests and Hosts. *(Built by Teammate)*
+*   **`report_ticket`**: Platform moderation system for users to report safety or quality issues. *(Built by Teammate)*
 
 ---
 
