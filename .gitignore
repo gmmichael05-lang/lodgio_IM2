@@ -1,0 +1,19 @@
+# Environments
+.venv/
+venv/
+env/
+
+# Python caching
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+db.sqlite3
+
+# IDEs
+.idea/
+.vscode/
+
+# Environment Variables
+.env
