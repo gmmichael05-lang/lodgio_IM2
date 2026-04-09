@@ -12,10 +12,20 @@ To ensure a cohesive project, the ERD was divided such that each group member ha
 *   **`wishlist`**: Manages users saving and tracking their favorite properties. *(Built by Teammate)*
 *   **`search`**: Handles and logs query filtering across active lodgings. *(Built by Teammate)*
 *   **`approvals`**: Administrator tracking for validating and verifying host listings. *(Built by Teammate)*
+
 - `IdentityDocument` (upload, track, and verify user documents)  *(Built by Teammate)*
   - `Message` (send and receive messages between users)  *(Built by Teammate)*
   - `ReportTicket` (submit and manage user reports)  *(Built by Teammate)*
   This app contains **models, views, URLs, forms, and UI templates** for these entities.
+
+*   **`identity_document`**: Secure tracking and verification of user IDs and Host verification. *(Built by Teammate)*
+*   **`message`**: Handles internal communication history between Guests and Hosts. *(Built by Teammate)*
+*   **`report_ticket`**: Platform moderation system for users to report safety or quality issues. *(Built by Teammate)*
+*   **`reviews`**: Allows users to leave and read feedback on host listings. *(Built by Teammate)*
+*   **`coupon`**: Manages the creation and tracking of promotional discounts. *(Built by Teammate)*
+*   **`coupon_usage`**: Logs and verifies the application of coupons to bookings. *(Built by Teammate)*
+
+>>>>>>> 214f70052b7d070765719a26882f34d3c58a1088
 ---
 
 ## How to Run This Project

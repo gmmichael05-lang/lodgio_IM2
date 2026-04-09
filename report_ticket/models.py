@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 
 class ReportTicket(models.Model):
@@ -10,8 +10,8 @@ class ReportTicket(models.Model):
     ]
 
     report_id = models.AutoField(primary_key=True)
-    reporter = models.ForeignKey(User, related_name='reports_made', on_delete=models.CASCADE)
-    reported_user = models.ForeignKey(User, related_name='reports_received', null=True, blank=True,
+    reporter = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='reports_made', on_delete=models.CASCADE)
+    reported_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='reports_received', null=True, blank=True,
                                       on_delete=models.SET_NULL)
     reported_listing_id = models.IntegerField(null=True, blank=True)
     reason_text = models.CharField(max_length=255)
