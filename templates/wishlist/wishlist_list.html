@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block title %}Wishlist | Lodgio{% endblock %}
+{% block content %}
+<div class="dashboard-header">
+    <h1>Wishlist</h1>
+    <p class="text-muted">User saved listings and favorite properties</p>
+</div>
+
+<div class="glass-card">
+    <ul style="list-style-type: none;">
+    {% for w in wishlists %}
+      <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--glass-border);">
+        <strong>User {{ w.user_id }}</strong> added <strong>Listing {{ w.listing_id }}</strong><br>
+        <span class="text-muted">Date: {{ w.added_at }}</span>
+      </li>
+    {% empty %}
+      <li>No wishlist items yet.</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
