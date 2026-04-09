@@ -1,0 +1,77 @@
+﻿.\.venv\Scripts\python.exe 
+: SystemCheckError: System 
+check identified some 
+issues:
+At line:1 char:1
++ 
+.\.venv\Scripts\python.exe 
+manage.py check 2> 
+check_err.txt > check_o ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (Sys  
+  temCheckErro...ed some   
+  issues::String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+
+ERRORS:
+identity_document.IdentityD
+ocument.document_image: 
+(fields.E210) Cannot use 
+ImageField because Pillow 
+is not installed.
+	HINT: Get Pillow at https:
+//pypi.org/project/Pillow/ 
+or run command "python -m 
+pip install Pillow".
+identity_document.IdentityD
+ocument.user: 
+(fields.E301) Field 
+defines a relation with 
+the model 'auth.User', 
+which has been swapped out.
+	HINT: Update the relation 
+to point at 
+'settings.AUTH_USER_MODEL'.
+message.Message.receiver: 
+(fields.E301) Field 
+defines a relation with 
+the model 'auth.User', 
+which has been swapped out.
+	HINT: Update the relation 
+to point at 
+'settings.AUTH_USER_MODEL'.
+message.Message.sender: 
+(fields.E301) Field 
+defines a relation with 
+the model 'auth.User', 
+which has been swapped out.
+	HINT: Update the relation 
+to point at 
+'settings.AUTH_USER_MODEL'.
+report_ticket.ReportTicket.
+reported_user: 
+(fields.E301) Field 
+defines a relation with 
+the model 'auth.User', 
+which has been swapped out.
+	HINT: Update the relation 
+to point at 
+'settings.AUTH_USER_MODEL'.
+report_ticket.ReportTicket.
+reporter: (fields.E301) 
+Field defines a relation 
+with the model 
+'auth.User', which has 
+been swapped out.
+	HINT: Update the relation 
+to point at 
+'settings.AUTH_USER_MODEL'.
+
+System check identified 6 
+issues (0 silenced).

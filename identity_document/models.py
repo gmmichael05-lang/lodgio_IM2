@@ -1,10 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 
 class IdentityDocument(models.Model):
     document_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     document_type = models.CharField(max_length=50)
     document_number = models.CharField(max_length=100)
     expiration_date = models.DateField(null=True, blank=True)
