@@ -23,4 +23,6 @@ urlpatterns = [
     path('search/', include('search.urls')),
     path('approvals/', include('approvals.urls')),
     path('wishlist/', include('wishlist.urls')),
+    path('listings/', include('listings.urls')),
+    path('bookings/', include('bookings.urls')),
 ]
