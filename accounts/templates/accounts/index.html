@@ -1,0 +1,31 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+<div class="page-hero animate-fadeIn">
+    <div class="container">
+        <h1 style="font-size: 32px; font-weight: 800; color: var(--navy-900); margin-bottom: 8px;">Welcome back, {{ user.full_name|default:user.email }}!</h1>
+        <p style="color: var(--navy-600); font-weight: 500; font-size: 15px;">Access your entire Lodgio suite from this secure dashboard.</p>
+    </div>
+</div>
+
+<div class="container animate-slideUp">
+    <div class="section-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <h2 style="font-size: 20px; font-weight: 700; color: var(--navy-900);">Active Dashboard</h2>
+            <button class="btn-ghost">Refresh Status</button>
+        </div>
+        
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="/accounts/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Accounts</a>
+            <a href="/Properties/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Properties & Bookings</a>
+            <a href="/finances/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Finances</a>
+            <a href="/communications/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Communications</a>
+            <a href="/discovery/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Discovery & Features</a>
+            <a href="/marketing/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px;">Marketing & Engagements</a>
+            {% if request.user.is_staff or request.user.role == 'Admin' %}
+            <a href="/admin/" class="btn-ghost" style="padding: 16px; border: 1px solid var(--navy-200); border-radius: 8px; background-color: var(--brand-50);">Admin Panel</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

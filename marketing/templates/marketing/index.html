@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marketing - Lodgio</title>
+</head>
+<body>
+    <h1>Marketing Overview</h1>
+    <h2>Coupons</h2>
+    <ul>
+    {% for c in coupons %}
+        <li>{{ c.code }}</li>
+    {% endfor %}
+    </ul>
+    <h2>Coupon Usages</h2>
+    <ul>
+    {% for cu in usages %}
+        <li>Usage</li>
+    {% endfor %}
+    </ul>
+    <h2>Reviews</h2>
+    <ul>
+    {% for r in reviews %}
+        <li>{{ r.rating }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

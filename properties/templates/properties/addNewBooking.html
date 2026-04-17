@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Booking</title>
+</head>
+<body>
+<div>
+    <h1>Add New Booking</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        
+        <p style="font-weight: bold;">
+            Estimated Total: $<span id="totalPreview">0.00</span>
+        </p>
+        
+        <br>
+        <input type="submit" value="Save Booking">
+    </form>
+
+    <br>
+    <a href="{% url 'properties:index' %}">Back to Listings</a>
+</div>
+
+{{ listing_prices|json_script:"listing-prices-data" }}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fetch Django dynamic IDs
+        const listingSelect = document.getElementById('id_listing');
+        const checkInInput = document.getElementById('id_check_in_date');
+        const checkOutInput = document.getElementById('id_check_out_date');
+        const previewSpan = document.getElementById('totalPreview');
+        
+        // Load the Python dictionary we passed from views.py that mapping Pricing info
+        const prices = JSON.parse(document.getElementById('listing-prices-data').textContent);
+        
+        function calculateTotal() {
+            const listingId = listingSelect.value;
+            const checkIn = new Date(checkInInput.value);
+            const checkOut = new Date(checkOutInput.value);
+            
+            // Validate all fields are filled before doing math
+            if (listingId && !isNaN(checkIn) && !isNaN(checkOut)) {
+                let diffTime = checkOut - checkIn;
+                let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                // Keep the same minimum 1-day fallback rule we put in views.py!
+                if (diffDays < 1) diffDays = 1;
+                
+                const basePrice = prices[listingId] || 0;
+                const total = basePrice * diffDays;
+                
+                previewSpan.textContent = total.toFixed(2);
+            } else {
+                previewSpan.textContent = "0.00";
+            }
+        }
+        
+        // Add event listeners so anytime ANY of these input fields change, it reruns the math above
+        listingSelect.addEventListener('change', calculateTotal);
+        checkInInput.addEventListener('change', calculateTotal);
+        checkOutInput.addEventListener('change', calculateTotal);
+    });
+</script>
+</body>
+</html>

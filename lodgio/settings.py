@@ -37,18 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
-    'listings',
-    'bookings',
-    'reviews',
-    'coupon',
-    'coupon_usage',
-    'search',
-    'approvals',
-    'wishlist',
-    'identity_document',
-    'message',
-    'report_ticket',
+    'accounts',
+    'properties',
+    'communications',
+    'discovery',
+    'marketing',
+    'finances',
 ]
 
 MIDDLEWARE = [
@@ -136,4 +130,4 @@ import mimetypes
 mimetypes.add_type("text/css", ".css", True)
 
 # Custom User Model
-AUTH_USER_MODEL = 'core.User'
+AUTH_USER_MODEL = 'accounts.User'

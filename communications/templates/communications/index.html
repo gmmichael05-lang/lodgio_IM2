@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Communications - Lodgio</title>
+</head>
+<body>
+    <h1>Communications Overview</h1>
+    <h2>Documents</h2>
+    <ul>
+    {% for doc in identity_documents %}
+        <li>{{ doc.document_type }}</li>
+    {% endfor %}
+    </ul>
+    <h2>Messages</h2>
+    <ul>
+    {% for msg in messages %}
+        <li>{{ msg.content }}</li>
+    {% endfor %}
+    </ul>
+    <h2>Reports</h2>
+    <ul>
+    {% for rep in report_tickets %}
+        <li>{{ rep.reason_text }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

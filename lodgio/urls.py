@@ -16,13 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from properties import views as properties_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),
-    path('search/', include('search.urls')),
-    path('approvals/', include('approvals.urls')),
-    path('wishlist/', include('wishlist.urls')),
-    path('listings/', include('listings.urls')),
-    path('bookings/', include('bookings.urls')),
+    path('', properties_views.index, name='root_index'),
+    path('Properties/', include('properties.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('finances/', include('finances.urls')),
+    path('communications/', include('communications.urls')),
+    path('discovery/', include('discovery.urls')),
+    path('marketing/', include('marketing.urls')),
 ]

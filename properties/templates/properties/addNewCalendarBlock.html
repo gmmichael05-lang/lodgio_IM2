@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Calendar Block</title>
+</head>
+<body>
+<div>
+    <h1>Add New Calendar Block</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <br>
+        <input type="submit" value="Save Calendar Block">
+    </form>
+
+    <br>
+    <a href="{% url 'properties:index' %}">Back to Listings</a>
+</div>
+</body>
+</html>
