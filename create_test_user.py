@@ -2,7 +2,7 @@ import django, os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lodgio.settings')
 django.setup()
 
-from core.models import User
+from accounts.models import User
 
 try:
     user = User.objects.get(username='admin')

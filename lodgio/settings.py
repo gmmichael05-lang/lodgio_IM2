@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lodgio_db',
         'USER': 'root',
-        'PASSWORD': 'root1234',
+        'PASSWORD': 'Allankrsna123#P',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

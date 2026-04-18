@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Coupon Usage</title>
+</head>
+<body>
+<div>
+    <h1>Add New Coupon Usage</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <br>
+        <input type="submit" value="Save Coupon Usage">
+    </form>
+
+    <br>
+    <a href="{% url 'marketing:index' %}">Back to Marketing</a>
+</div>
+</body>
+</html>

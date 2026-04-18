@@ -6,22 +6,34 @@
 </head>
 <body>
     <h1>Marketing Overview</h1>
+
     <h2>Coupons</h2>
+    <a href="{% url 'marketing:add_coupon' %}">Add New Coupon</a>
     <ul>
     {% for c in coupons %}
-        <li>{{ c.code }}</li>
+        <li>{{ c.code }} – {{ c.discount_value }}% (Expires: {{ c.expiration_date }})</li>
+    {% empty %}
+        <li>No coupons yet.</li>
     {% endfor %}
     </ul>
+
     <h2>Coupon Usages</h2>
+    <a href="{% url 'marketing:add_coupon_usage' %}">Add New Coupon Usage</a>
     <ul>
     {% for cu in usages %}
-        <li>Usage</li>
+        <li>{{ cu.coupon.code }} used by {{ cu.user }} on {{ cu.used_at }}</li>
+    {% empty %}
+        <li>No coupon usages yet.</li>
     {% endfor %}
     </ul>
+
     <h2>Reviews</h2>
+    <a href="{% url 'marketing:add_review' %}">Add New Review</a>
     <ul>
     {% for r in reviews %}
-        <li>{{ r.rating }}</li>
+        <li>{{ r.listing }} – {{ r.rating }}/5 – {{ r.comment }}</li>
+    {% empty %}
+        <li>No reviews yet.</li>
     {% endfor %}
     </ul>
 </body>
