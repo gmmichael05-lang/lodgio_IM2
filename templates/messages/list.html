@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Messages{% endblock %}
+{% block content %}
+<h2>Messages</h2>
+<a class="btn" href="{% url 'message_add' %}">Send Message</a>
+<table>
+    <tr>
+        <th>Sender</th>
+        <th>Receiver</th>
+        <th>Content</th>
+        <th>Sent At</th>
+    </tr>
+    {% for msg in messages %}
+    <tr>
+        <td>{{ msg.sender.username }}</td>
+        <td>{{ msg.receiver.username }}</td>
+        <td>{{ msg.content }}</td>
+        <td>{{ msg.sent_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

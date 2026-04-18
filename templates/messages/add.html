@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Send Message{% endblock %}
+{% block content %}
+<h2>Send Message</h2>
+<form method="post">
+    {% csrf_token %}
+    <label>Sender:</label>
+    <select name="sender">
+        {% for user in users %}
+            <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label>Receiver:</label>
+    <select name="receiver">
+        {% for user in users %}
+            <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label>Content:</label>
+    <textarea name="content" rows="3" required></textarea><br>
+
+    <button type="submit">Send</button>
+</form>
+{% endblock %}

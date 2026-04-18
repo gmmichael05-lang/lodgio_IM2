@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'approvals',
     'wishlist',
     'identity_document',
-    'message',
+    'communications',
     'report_ticket',
 ]
 
@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'lodgio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lodgio_db',
-        'USER': 'root',
-        'PASSWORD': 'root1234',
+        'NAME': 'lodgio',
+        'USER': 'django_user',
+        'PASSWORD': 'django123',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -137,3 +137,8 @@ mimetypes.add_type("text/css", ".css", True)
 
 # Custom User Model
 AUTH_USER_MODEL = 'core.User'
+
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

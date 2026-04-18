@@ -2,35 +2,42 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.views.generic.base import View
+
 from .forms import LoginForm
 
+
+# ✅ HOME PAGE VIEW (CLASS-BASED)
 class HomeView(View):
     template_name = "core/index.html"
-    
+
     def get(self, request):
         if not request.user.is_authenticated:
             return redirect('core:login')
         return render(request, self.template_name)
 
+
+# ✅ LOGIN VIEW
 class LoginView(View):
     template = 'core/login.html'
-    
+
     def get(self, request):
         if request.user.is_authenticated:
             return redirect('core:index')
         form = LoginForm()
         return render(request, self.template, {'form': form})
-        
+
     def post(self, request):
         form = LoginForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
+
             user = authenticate(request, email=email, password=password)
+
             if user is not None:
                 login(request, user)
                 return redirect('core:index')
             else:
                 messages.error(request, 'Invalid email or password.')
-                
+
         return render(request, self.template, {'form': form})

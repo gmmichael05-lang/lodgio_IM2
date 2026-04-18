@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<h2>Report Tickets</h2>
+<a class="btn" href="{% url 'report_add' %}">Add Report</a>
+<table>
+    <tr>
+        <th>Reporter</th>
+        <th>Reported User</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th>Created At</th>
+    </tr>
+    {% for rpt in reports %}
+    <tr>
+        <td>{{ rpt.reporter.username }}</td>
+        <td>{{ rpt.reported_user.username if rpt.reported_user else '-' }}</td>
+        <td>{{ rpt.reason_text }}</td>
+        <td>{{ rpt.status }}</td>
+        <td>{{ rpt.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
