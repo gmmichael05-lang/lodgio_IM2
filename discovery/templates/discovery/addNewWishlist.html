@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Wishlist Item</title>
+</head>
+<body>
+    <h1>Add New Wishlist Item</h1>
+    <form method="post">
+        {% csrf_token %}
+        <table border="0" cellpadding="5" cellspacing="0">
+            {{ form.as_table }}
+        </table>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <a href="{% url 'discovery:index' %}">Back to Discovery</a>
+</body>
+</html>

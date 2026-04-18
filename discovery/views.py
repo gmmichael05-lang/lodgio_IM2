@@ -1,17 +1,49 @@
-from django.shortcuts import render
-from django.views import View
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import SearchLog, Wishlist, ListingApproval
+from .forms import SearchLogForm, WishlistForm, ListingApprovalForm
 
-class IndexView(View):
-    template_name = 'discovery/index.html'
-    
-    def get(self, request):
-        searches = SearchLog.objects.all()
-        wishlists = Wishlist.objects.all()
-        approvals = ListingApproval.objects.all()
-        
-        return render(request, self.template_name, {
-            'searches': searches,
-            'wishlists': wishlists,
-            'approvals': approvals,
-        })
+def index(request):
+    search_logs = SearchLog.objects.all().order_by('-searched_at')
+    wishlists = Wishlist.objects.all().order_by('-added_at')
+    approvals = ListingApproval.objects.all().order_by('-reviewed_at')
+
+    context = {
+        'search_logs': search_logs,
+        'wishlists': wishlists,
+        'approvals': approvals,
+    }
+    return render(request, 'discovery/index.html', context)
+
+def add_search_log(request):
+    if request.method == 'POST':
+        form = SearchLogForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Search Log added successfully!')
+            return redirect('discovery:index')
+    else:
+        form = SearchLogForm()
+    return render(request, 'discovery/addNewSearchLog.html', {'form': form})
+
+def add_wishlist(request):
+    if request.method == 'POST':
+        form = WishlistForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Wishlist item added successfully!')
+            return redirect('discovery:index')
+    else:
+        form = WishlistForm()
+    return render(request, 'discovery/addNewWishlist.html', {'form': form})
+
+def add_listing_approval(request):
+    if request.method == 'POST':
+        form = ListingApprovalForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Listing Approval added successfully!')
+            return redirect('discovery:index')
+    else:
+        form = ListingApprovalForm()
+    return render(request, 'discovery/addNewListingApproval.html', {'form': form})
