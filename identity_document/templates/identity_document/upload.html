@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Identity Document Upload</title>
+</head>
+<body>
+
+<h2>Upload Identity Document</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <input type="text" name="document_type" placeholder="Document Type" required><br><br>
+
+    <input type="text" name="document_number" placeholder="Document Number" required><br><br>
+
+    <input type="date" name="expiration_date"><br><br>
+
+    <input type="file" name="document_image" required><br><br>
+
+    <button type="submit">Upload</button>
+</form>
+
+<hr>
+
+<h3>Uploaded Documents</h3>
+
+<ul>
+    {% for d in docs %}
+        <li>
+            {{ d.document_type }} - {{ d.document_number }} - {{ d.uploaded_at }}
+        </li>
+    {% empty %}
+        <li>No documents yet</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
