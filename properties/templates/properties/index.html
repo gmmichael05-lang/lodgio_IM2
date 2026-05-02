@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Properties / Bookings</title>
+    <title>Home - Lodgio</title>
 </head>
 <body>
 <div>
-    <h1>Listings, Bookings & Calendar Blocks</h1>
+    <h2>Welcome!</h2>
+    <nav>
+        <a href="{% url 'properties:edit_profile' %}">Edit Profile</a> |
+        <a href="{% url 'properties:add_listing' %}">Add New Listing</a> |
+        <a href="{% url 'properties:add_booking' %}">Add New Booking</a> |
+        <a href="{% url 'properties:add_calendar_block' %}">Add New Calendar Block</a> |
+        <a href="{% url 'properties:logoff' %}">Log Off</a>
+    </nav>
+
+    <hr>
 
     <h2>Listings</h2>
-    <a href="{% url 'properties:add_listing' %}">Add New Listing</a>
 
     {% if listings %}
     <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
@@ -41,7 +49,6 @@
 
     <br>
     <h2>Bookings</h2>
-    <a href="{% url 'properties:add_booking' %}">Add New Booking</a>
 
     {% if bookings %}
     <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
@@ -74,7 +81,6 @@
 
     <br>
     <h2>Calendar Blocks</h2>
-    <a href="{% url 'properties:add_calendar_block' %}">Add New Calendar Block</a>
 
     {% if calendar_blocks %}
     <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
@@ -98,9 +104,6 @@
     {% else %}
     <p>No calendar blocks yet.</p>
     {% endif %}
-
-    <br>
-    <a href="{% url 'accounts:index' %}">Back to Dashboard</a>
 </div>
 </body>
 </html>

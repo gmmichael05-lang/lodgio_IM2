@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Lodgio</title>
+</head>
+<body>
+    <h2>Lodgio Login</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        Email: <input type="email" name="txt_email" placeholder="Email"><br>
+        Password: <input type="password" name="txt_password" placeholder="Password"><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <p style="color: red;">{{ msg }}</p>
+
+    <a href="{% url 'properties:register' %}">Register</a>
+</body>
+</html>

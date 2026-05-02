@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add New Calendar Block</title>
+    <title>Edit Profile - Lodgio</title>
 </head>
 <body>
-<div>
-    <h1>Add New Calendar Block</h1>
+    <h2>Edit Profile</h2>
 
-    <form method="POST">
+    <form method="post">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>
         <br>
-        <input type="submit" value="Save Calendar Block">
+        <input type="submit" value="Update Profile">
     </form>
 
     <br>
     <a href="{% url 'properties:home_page' %}">Back to Home</a>
-</div>
 </body>
 </html>

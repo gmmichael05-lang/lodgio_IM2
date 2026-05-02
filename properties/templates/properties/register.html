@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Lodgio</title>
+</head>
+<body>
+    <h2>Lodgio Register</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <br>
+        <button type="submit">Register</button>
+    </form>
+
+    <p style="color: red;">{{ msg }}</p>
+
+    <a href="{% url 'properties:login' %}">Back to Login</a>
+</body>
+</html>
