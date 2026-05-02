@@ -16,11 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from marketing import views as marketing_views
+from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', marketing_views.index, name='root_index'),
+    path('', lambda request: redirect('marketing:login'), name='root_index'),
     path('Properties/', include('properties.urls')),
     path('accounts/', include('accounts.urls')),
     path('finances/', include('finances.urls')),

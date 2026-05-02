@@ -7,6 +7,22 @@
 <body>
     <h1>Marketing Overview</h1>
 
+    <p>Welcome, <strong>{{ request.session.marketing_user }}</strong></p>
+
+    <nav>
+        <a href="{% url 'marketing:edit_profile' %}">Edit Profile</a> |
+        <a href="{% url 'marketing:add_new_record' %}">Add New Record</a> |
+        <a href="{% url 'marketing:logoff' %}">Log Off</a>
+    </nav>
+
+    <hr>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
     <h2>Coupons</h2>
     <a href="{% url 'marketing:add_coupon' %}">Add New Coupon</a>
     <ul>

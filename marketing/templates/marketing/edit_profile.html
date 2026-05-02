@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile - Marketing</title>
+</head>
+<body>
+    <h1>Edit Profile</h1>
+
+    <nav>
+        <a href="{% url 'marketing:index' %}">Home</a> |
+        <a href="{% url 'marketing:add_new_record' %}">Add New Record</a> |
+        <a href="{% url 'marketing:logoff' %}">Log Off</a>
+    </nav>
+
+    <hr>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" action="{% url 'marketing:edit_profile' %}">
+        {% csrf_token %}
+
+        <label for="first_name">First Name:</label><br>
+        <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}"><br><br>
+
+        <label for="last_name">Last Name:</label><br>
+        <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}"><br><br>
+
+        <label for="email">Email (used to log in):</label><br>
+        <input type="email" id="email" name="email" value="{{ user.email }}" required><br><br>
+
+        <hr>
+        <p><strong>Change Password</strong> (leave blank to keep current password)</p>
+
+        <label for="new_password">New Password:</label><br>
+        <input type="password" id="new_password" name="new_password" placeholder="Leave blank to keep current"><br><br>
+
+        <button type="submit">Save Changes</button>
+        <a href="{% url 'marketing:index' %}">Cancel</a>
+    </form>
+</body>
+</html>

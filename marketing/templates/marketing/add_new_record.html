@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Record - Marketing</title>
+</head>
+<body>
+    <h1>Add New Record</h1>
+
+    <nav>
+        <a href="{% url 'marketing:index' %}">Home</a> |
+        <a href="{% url 'marketing:edit_profile' %}">Edit Profile</a> |
+        <a href="{% url 'marketing:logoff' %}">Log Off</a>
+    </nav>
+
+    <hr>
+
+    <p>Choose what to add:</p>
+    <ul>
+        <li><a href="{% url 'marketing:add_coupon' %}">Add New Coupon</a></li>
+        <li><a href="{% url 'marketing:add_coupon_usage' %}">Add New Coupon Usage</a></li>
+        <li><a href="{% url 'marketing:add_review' %}">Add New Review</a></li>
+    </ul>
+
+    <a href="{% url 'marketing:index' %}">Back to Home</a>
+</body>
+</html>
