@@ -23,7 +23,7 @@ def add_search_log(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Search Log added successfully!')
-            return redirect('discovery:index')
+            return redirect('home')
     else:
         form = SearchLogForm()
     return render(request, 'discovery/addNewSearchLog.html', {'form': form})
@@ -34,7 +34,7 @@ def add_wishlist(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Wishlist item added successfully!')
-            return redirect('discovery:index')
+            return redirect('home')
     else:
         form = WishlistForm()
     return render(request, 'discovery/addNewWishlist.html', {'form': form})
@@ -45,7 +45,7 @@ def add_listing_approval(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Listing Approval added successfully!')
-            return redirect('discovery:index')
+            return redirect('home')
     else:
         form = ListingApprovalForm()
     return render(request, 'discovery/addNewListingApproval.html', {'form': form})

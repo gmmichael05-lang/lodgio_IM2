@@ -28,6 +28,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('finances/', include('finances.urls')),
     path('communications/', include('communications.urls')),
-    path('discovery/', include('discovery.urls')),
+    path('AddNewSearchLog', discovery_views.add_search_log, name='add_search_log'),
+    path('AddNewWishlist', discovery_views.add_wishlist, name='add_wishlist'),
+    path('AddNewListingApproval', discovery_views.add_listing_approval, name='add_listing_approval'),
     path('marketing/', include('marketing.urls')),
 ]

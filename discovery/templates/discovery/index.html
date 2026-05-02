@@ -21,7 +21,7 @@
         {% endif %}
 
         <h2>Search Logs</h2>
-        <a href="{% url 'discovery:add_search_log' %}">Add New Search Log</a>
+        <a href="{% url 'add_search_log' %}">Add New Search Log</a>
         {% if search_logs %}
         <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
             <tr>
@@ -45,7 +45,7 @@
 
         <br>
         <h2>Wishlist Items</h2>
-        <a href="{% url 'discovery:add_wishlist' %}">Add New Wishlist Item</a>
+        <a href="{% url 'add_wishlist' %}">Add New Wishlist Item</a>
         {% if wishlists %}
         <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
             <tr>
@@ -69,7 +69,7 @@
 
         <br>
         <h2>Listing Approvals</h2>
-        <a href="{% url 'discovery:add_listing_approval' %}">Add New Listing Approval</a>
+        <a href="{% url 'add_listing_approval' %}">Add New Listing Approval</a>
         {% if approvals %}
         <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
             <tr>
