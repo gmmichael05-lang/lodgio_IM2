@@ -1,97 +1,102 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Discovery Module</title>
 </head>
+
 <body>
-<div>
-    <h1>Discovery Data</h1>
+    <div>
+        <h1>Discovery Data</h1>
 
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+        <a href="{% url 'edit_profile' %}">Edit Profile</a> |
+        <a href="{% url 'accounts:logout' %}">Log Off</a>
 
-    <h2>Search Logs</h2>
-    <a href="{% url 'discovery:add_search_log' %}">Add New Search Log</a>
-    {% if search_logs %}
-    <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
-        <tr>
-            <th>ID</th>
-            <th>User ID</th>
-            <th>Filters Used</th>
-            <th>Searched At</th>
-        </tr>
-        {% for log in search_logs %}
-        <tr>
-            <td>{{ log.id }}</td>
-            <td>{{ log.user_id }}</td>
-            <td>{{ log.filters_used }}</td>
-            <td>{{ log.searched_at|date:"M d, Y H:i" }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <p>No search logs yet.</p>
-    {% endif %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
 
-    <br>
-    <h2>Wishlist Items</h2>
-    <a href="{% url 'discovery:add_wishlist' %}">Add New Wishlist Item</a>
-    {% if wishlists %}
-    <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
-        <tr>
-            <th>ID</th>
-            <th>User ID</th>
-            <th>Listing ID</th>
-            <th>Added At</th>
-        </tr>
-        {% for item in wishlists %}
-        <tr>
-            <td>{{ item.id }}</td>
-            <td>{{ item.user_id }}</td>
-            <td>{{ item.listing_id }}</td>
-            <td>{{ item.added_at|date:"M d, Y H:i" }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <p>No wishlist items yet.</p>
-    {% endif %}
+        <h2>Search Logs</h2>
+        <a href="{% url 'discovery:add_search_log' %}">Add New Search Log</a>
+        {% if search_logs %}
+        <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
+            <tr>
+                <th>ID</th>
+                <th>User ID</th>
+                <th>Filters Used</th>
+                <th>Searched At</th>
+            </tr>
+            {% for log in search_logs %}
+            <tr>
+                <td>{{ log.id }}</td>
+                <td>{{ log.user_id }}</td>
+                <td>{{ log.filters_used }}</td>
+                <td>{{ log.searched_at|date:"M d, Y H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No search logs yet.</p>
+        {% endif %}
 
-    <br>
-    <h2>Listing Approvals</h2>
-    <a href="{% url 'discovery:add_listing_approval' %}">Add New Listing Approval</a>
-    {% if approvals %}
-    <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
-        <tr>
-            <th>ID</th>
-            <th>Listing ID</th>
-            <th>Admin ID</th>
-            <th>Decision</th>
-            <th>Remarks</th>
-            <th>Reviewed At</th>
-        </tr>
-        {% for app in approvals %}
-        <tr>
-            <td>{{ app.id }}</td>
-            <td>{{ app.listing_id }}</td>
-            <td>{{ app.admin_id }}</td>
-            <td>{{ app.decision }}</td>
-            <td>{{ app.remarks }}</td>
-            <td>{{ app.reviewed_at|date:"M d, Y H:i" }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <p>No listing approvals yet.</p>
-    {% endif %}
+        <br>
+        <h2>Wishlist Items</h2>
+        <a href="{% url 'discovery:add_wishlist' %}">Add New Wishlist Item</a>
+        {% if wishlists %}
+        <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
+            <tr>
+                <th>ID</th>
+                <th>User ID</th>
+                <th>Listing ID</th>
+                <th>Added At</th>
+            </tr>
+            {% for item in wishlists %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.user_id }}</td>
+                <td>{{ item.listing_id }}</td>
+                <td>{{ item.added_at|date:"M d, Y H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No wishlist items yet.</p>
+        {% endif %}
 
-    <br>
-    <a href="{% url 'accounts:index' %}">Back to Dashboard</a>
-</div>
+        <br>
+        <h2>Listing Approvals</h2>
+        <a href="{% url 'discovery:add_listing_approval' %}">Add New Listing Approval</a>
+        {% if approvals %}
+        <table border="1" cellpadding="5" cellspacing="0" style="margin-top: 10px;">
+            <tr>
+                <th>ID</th>
+                <th>Listing ID</th>
+                <th>Admin ID</th>
+                <th>Decision</th>
+                <th>Remarks</th>
+                <th>Reviewed At</th>
+            </tr>
+            {% for app in approvals %}
+            <tr>
+                <td>{{ app.id }}</td>
+                <td>{{ app.listing_id }}</td>
+                <td>{{ app.admin_id }}</td>
+                <td>{{ app.decision }}</td>
+                <td>{{ app.remarks }}</td>
+                <td>{{ app.reviewed_at|date:"M d, Y H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No listing approvals yet.</p>
+        {% endif %}
+
+
+    </div>
 </body>
+
 </html>

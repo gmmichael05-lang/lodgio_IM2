@@ -14,7 +14,7 @@
             <div>
                 {% if user.is_authenticated %}
                     <span style="margin-right: 15px; font-weight: 600; font-size: 14px; color: var(--navy-700);">{{ user.email }}</span>
-                    <a href="/login/" class="btn-ghost" style="padding: 6px 14px; font-size: 13px;">Sign Out</a>
+                    <a href="{% url 'accounts:logout' %}" class="btn-ghost" style="padding: 6px 14px; font-size: 13px;">Sign Out</a>
                 {% endif %}
             </div>
         </header>

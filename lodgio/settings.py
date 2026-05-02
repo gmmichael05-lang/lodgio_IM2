@@ -131,3 +131,6 @@ mimetypes.add_type("text/css", ".css", True)
 
 # Custom User Model
 AUTH_USER_MODEL = 'accounts.User'
+
+# Login URL for login_required decorator
+LOGIN_URL = '/'

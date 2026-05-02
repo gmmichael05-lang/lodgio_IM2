@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import SearchLog, Wishlist, ListingApproval
 from .forms import SearchLogForm, WishlistForm, ListingApprovalForm
 
+@login_required
 def index(request):
     search_logs = SearchLog.objects.all().order_by('-searched_at')
     wishlists = Wishlist.objects.all().order_by('-added_at')
