@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
+    username = models.CharField(max_length=150, unique=True, null=True, blank=True)
+
     class Role(models.TextChoices):
         GUEST = 'Guest', 'Guest'
         HOST = 'Host', 'Host'
@@ -19,9 +21,9 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.ACTIVE)
     created_at = models.DateTimeField(auto_now_add=True)
-    
+
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'full_name']
+    REQUIRED_FIELDS = ['full_name']
 
     def __str__(self):
         return self.email

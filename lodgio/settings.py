@@ -88,8 +88,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lodgio',
-        'USER': 'django_user',
-        'PASSWORD': 'django123',
+        'USER': 'root',
+        'PASSWORD': 'admin123',  # or your MySQL root password
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -135,10 +135,18 @@ STATIC_URL = 'static/'
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)
 
-# Custom User Model
 AUTH_USER_MODEL = 'core.User'
 
 import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+LOGIN_URL = 'core:login'
+LOGIN_REDIRECT_URL = 'core:index'
+LOGOUT_REDIRECT_URL = 'core:login'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]

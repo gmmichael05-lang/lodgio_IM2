@@ -425,3 +425,42 @@ input:focus, textarea:focus, select:focus {
   .card, .section-card { padding: 20px; }
   .container { padding: 0 16px; }
 }
+
+/* Action button row */
+.action-bar {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+/* Ghost button style */
+.btn-ghost {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: white;
+    color: #1f2a44;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-ghost:hover {
+    background: #f3f6ff;
+    border-color: #c7d2fe;
+    transform: translateY(-1px);
+}
+
+/* Optional: danger style for logout */
+.btn-danger {
+    color: #b91c1c;
+}
+
+.btn-danger:hover {
+    background: #fef2f2;
+    border-color: #fecaca;
+}

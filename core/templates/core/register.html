@@ -3,7 +3,7 @@
 {% block content %}
 <div style="display: flex; align-items: center; justify-content: center; min-height: 85vh;">
     <div class="card" style="width: 100%; max-width: 420px; animation: popIn 0.3s ease both;">
-        <h1 style="text-align: center; color: var(--navy-900); font-weight: 800; font-size: 26px; margin-bottom: 24px;">Lodgio Secure Login</h1>
+        <h1 style="text-align: center; color: var(--navy-900); font-weight: 800; font-size: 26px; margin-bottom: 24px;">Create an Account</h1>
         
         {% if messages %}
             <div style="margin-bottom: 20px;">
@@ -19,6 +19,16 @@
             {% csrf_token %}
             
             <div style="margin-bottom: 18px;">
+                <label class="form-label">Full Name</label>
+                {{ form.full_name }}
+            </div>
+
+            <div style="margin-bottom: 18px;">
+                <label class="form-label">Username</label>
+                {{ form.username }}
+            </div>
+            
+            <div style="margin-bottom: 18px;">
                 <label class="form-label">Email Address</label>
                 {{ form.email }}
             </div>
@@ -28,11 +38,11 @@
                 {{ form.password }}
             </div>
             
-            <button type="submit" class="btn-primary" style="width: 100%; padding: 14px; font-size: 15px; box-shadow: var(--shadow-blue);">Login</button>
+            <button type="submit" class="btn-primary" style="width: 100%; padding: 14px; font-size: 15px; box-shadow: var(--shadow-blue);">Register</button>
         </form>
-
+        
         <div style="text-align: center; margin-top: 20px; font-size: 14px;">
-            <a href="{% url 'core:register' %}" style="color: #0d6efd; text-decoration: none;">Don't have an account? Register</a>
+            <a href="{% url 'core:login' %}" style="color: #0d6efd; text-decoration: none;">Already have an account? Login</a>
         </div>
     </div>
 </div>

@@ -1,0 +1,60 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div style="display: flex; align-items: center; justify-content: center; min-height: 85vh; margin-top: 20px;">
+    <div class="card" style="width: 100%; max-width: 500px; animation: popIn 0.3s ease both;">
+        <h1 style="text-align: center; color: var(--navy-900); font-weight: 800; font-size: 26px; margin-bottom: 24px;">Edit Profile</h1>
+        
+        {% if messages %}
+            <div style="margin-bottom: 20px;">
+                {% for message in messages %}
+                    <div class="status-badge {% if message.tags == 'error' %}status-rejected{% else %}status-approved{% endif %}" style="display: block; text-align: center; font-size: 14px; padding: 10px;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 18px;">
+                <div>
+                    <label class="form-label">First Name</label>
+                    {{ form.first_name }}
+                </div>
+                <div>
+                    <label class="form-label">Last Name</label>
+                    {{ form.last_name }}
+                </div>
+            </div>
+
+            <div style="margin-bottom: 18px;">
+                <label class="form-label">Full Name</label>
+                {{ form.full_name }}
+            </div>
+            
+            <div style="margin-bottom: 18px;">
+                <label class="form-label">Username</label>
+                {{ form.username }}
+            </div>
+
+            <div style="margin-bottom: 18px;">
+                <label class="form-label">Email Address (Login ID)</label>
+                {{ form.email }}
+            </div>
+            
+            <div style="margin-bottom: 28px;">
+                <label class="form-label">Update Password (Optional)</label>
+                {{ form.password }}
+            </div>
+            
+            <button type="submit" class="btn-primary" style="width: 100%; padding: 14px; font-size: 15px; box-shadow: var(--shadow-blue);">Update Profile</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 20px; font-size: 14px;">
+            <a href="{% url 'core:index' %}" style="color: #0d6efd; text-decoration: none;">← Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
