@@ -1,5 +1,15 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from .models import SearchLog, Wishlist, ListingApproval
+
+class LoginForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = get_user_model()
+        fields = ['full_name', 'email', 'phone_number']
 
 class SearchLogForm(forms.ModelForm):
     class Meta:
