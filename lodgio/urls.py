@@ -17,13 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from discovery import views as discovery_views
-from accounts import views as accounts_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', accounts_views.LoginView.as_view(), name='login'),
-    path('home/', discovery_views.index, name='home'),
-    path('edit-profile/', accounts_views.EditProfileView.as_view(), name='edit_profile'),
+    path('', discovery_views.index, name='root_index'),
     path('Properties/', include('properties.urls')),
     path('accounts/', include('accounts.urls')),
     path('finances/', include('finances.urls')),

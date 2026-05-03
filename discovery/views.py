@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from .models import SearchLog, Wishlist, ListingApproval
 from .forms import SearchLogForm, WishlistForm, ListingApprovalForm
 
-@login_required
 def index(request):
     search_logs = SearchLog.objects.all().order_by('-searched_at')
     wishlists = Wishlist.objects.all().order_by('-added_at')
@@ -23,7 +21,7 @@ def add_search_log(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Search Log added successfully!')
-            return redirect('home')
+            return redirect('root_index')
     else:
         form = SearchLogForm()
     return render(request, 'discovery/addNewSearchLog.html', {'form': form})
@@ -34,7 +32,7 @@ def add_wishlist(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Wishlist item added successfully!')
-            return redirect('home')
+            return redirect('root_index')
     else:
         form = WishlistForm()
     return render(request, 'discovery/addNewWishlist.html', {'form': form})
@@ -45,7 +43,7 @@ def add_listing_approval(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Listing Approval added successfully!')
-            return redirect('home')
+            return redirect('root_index')
     else:
         form = ListingApprovalForm()
     return render(request, 'discovery/addNewListingApproval.html', {'form': form})

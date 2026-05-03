@@ -1,37 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login – Lodgio</title>
-</head>
-<body>
-<div>
-    <h1>Lodgio Login</h1>
+{% extends "accounts/base.html" %}
 
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+{% block content %}
+<div style="display: flex; align-items: center; justify-content: center; min-height: 85vh;">
+    <div class="card" style="width: 100%; max-width: 420px; animation: popIn 0.3s ease both;">
+        <h1 style="text-align: center; color: var(--navy-900); font-weight: 800; font-size: 26px; margin-bottom: 24px;">Lodgio Secure Login</h1>
+        
+        {% if messages %}
+            <div style="margin-bottom: 20px;">
+                {% for message in messages %}
+                    <div class="status-badge status-rejected" style="display: block; text-align: center; font-size: 12px; padding: 10px;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
 
-    <form method="POST">
-        {% csrf_token %}
-
-        <p>
-            <label>Email Address</label><br>
-            {{ form.email }}
-        </p>
-
-        <p>
-            <label>Password</label><br>
-            {{ form.password }}
-        </p>
-
-        <p>
-            <button type="submit">Log In</button>
-        </p>
-    </form>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div style="margin-bottom: 18px;">
+                <label class="form-label">Email Address</label>
+                {{ form.email }}
+            </div>
+            
+            <div style="margin-bottom: 28px;">
+                <label class="form-label">Password</label>
+                {{ form.password }}
+            </div>
+            
+            <button type="submit" class="btn-primary" style="width: 100%; padding: 14px; font-size: 15px; box-shadow: var(--shadow-blue);">Log In Securely</button>
+        </form>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}
