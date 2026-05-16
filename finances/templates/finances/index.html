@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Finances - Lodgio</title>
+    <title>Finance Dashboard</title>
 </head>
 <body>
-    <h1>Finances Overview</h1>
-    <p>Placeholder for Payment, HostPayout, PriceAdjustment, and AdminLog logic to be built by another group member!</p>
+
+<h1>Finance Dashboard</h1>
+
+<h2>Balance: {{ balance }}</h2>
+<h3>Total Income: {{ total_income }}</h3>
+<h3>Total Expense: {{ total_expense }}</h3>
+
+<a href="{% url 'add_transaction' %}">Add Transaction</a>
+
+<hr>
+
+{% for transaction in transactions %}
+    <h3>{{ transaction.title }}</h3>
+    <p>{{ transaction.amount }}</p>
+    <p>{{ transaction.transaction_type }}</p>
+    <p>{{ transaction.description }}</p>
+    <hr>
+{% endfor %}
+
 </body>
 </html>
