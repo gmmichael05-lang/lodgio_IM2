@@ -1,21 +1,20 @@
 from django.db import models
-from django.conf import settings
-from properties.models import Listing, Booking
 
-# TODO: Another Member to implement logic for the following entities:
 
-class PriceAdjustment(models.Model):
-    # Connected to Listing
-    pass
+class Transaction(models.Model):
+    TRANSACTION_TYPES = (
+        ('Income', 'Income'),
+        ('Expense', 'Expense'),
+    )
 
-class HostPayout(models.Model):
-    # Connected to Booking & Host
-    pass
+    title = models.CharField(max_length=100)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    transaction_type = models.CharField(
+        max_length=10,
+        choices=TRANSACTION_TYPES
+    )
+    description = models.TextField(blank=True, null=True)
+    date_created = models.DateTimeField(auto_now_add=True)
 
-class Payment(models.Model):
-    # Connected to Booking
-    pass
-
-class AdminLog(models.Model):
-    # Standalone logging entity
-    pass
+    def __str__(self):
+        return f"{self.title} - {self.amount}"
